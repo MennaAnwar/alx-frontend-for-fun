@@ -800,8 +800,10 @@ ul.row {
 }
 
 /*** FORM ***/
+
 /* Comment section
-    =============================== */
+    ============================= */
+
 .post-comments {
   width: 80%;
   margin: 10rem 0 0 auto;
@@ -812,8 +814,9 @@ ul.row {
   font-variant: small-caps;
 }
 
-/* Basic form 
-    ================================ */
+/* Basic form
+    ============================= */
+
 form {
   display: flex;
   flex-direction: column;
@@ -825,7 +828,7 @@ fieldset {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 0;
+  border: none;
   padding: 0 0 2rem;
 }
 
