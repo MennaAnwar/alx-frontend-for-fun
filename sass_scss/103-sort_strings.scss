@@ -1,5 +1,32 @@
 /* Write a Sass file that sorts the variable $list_to_sort and prints the sorted list in the debug output. */
 @import "103-sort_list.scss";
-@each $name in $list_to_sort {
-  @debug #{$name};
+
+// Function to perform insertion sort on a list
+@function sort-list($list) {
+  $sorted-list: ();
+  @each $element in $list {
+    $sorted-list: insert-sorted($sorted-list, $element);
+  }
+  @return $sorted-list;
 }
+
+// Helper function to insert an element into a sorted list
+@function insert-sorted($list, $element) {
+  $length: length($list);
+  // If the list is empty or the element should be placed at the end
+  @if ($length == 0 or $element >= nth($list, $length)) {
+    @return append($list, $element);
+  }
+  // Find the correct position for the element
+  @for $i from 1 through $length {
+    @if ($element < nth($list, $i)) {
+      @return join(slice($list, 1, $i - 1), $element, $list, $i, $length);
+    }
+  }
+}
+
+// Sort the list
+$sorted_list: sort-list($list_to_sort);
+
+// Print the sorted list in the debug output
+@debug $sorted_list;
